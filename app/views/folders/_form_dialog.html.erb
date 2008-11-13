@@ -1,0 +1,11 @@
+
+    <%= hidden_field_tag :dlg_dir_edit_parent_node %>
+    <%= hidden_field_tag :dlg_dir_edit_target_file %>
+    <table class="dlg_form_table" cellspacing="0">
+      <tr>
+        <th><pre><%= app_localized_message(:label, :dir_name) %></pre></th>
+        <td>
+          <%= text_field_tag :dlg_dir_edit_dir_name, {}, :style => "width:100%;" %>
+        </td>
+      </tr>
+    </table>

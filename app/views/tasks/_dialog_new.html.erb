@@ -1,0 +1,24 @@
+<%
+@master_object = :task
+@master_symbol = :projects_task_edit_dialog
+@master_name   = 'タスク'
+-%>
+<div id="<%= @master_symbol %>" class="dialog">
+<div class='x-window-header'><%= image_tag("/images/etc/dlg_title_tsk_edit.gif") %></div>
+<div class='x-window-body'>
+
+  <div class="dlg_maincontent">
+    <%= form_tag({:controller => 'projects'}, {:id => @master_symbol.to_s+'_form'}) %>
+
+<%= render :partial => 'form_dialog' %>
+
+    </form>
+  </div>
+  <div class="dlg_bottom" style="text-align:right;">
+    <%= icon_link_tag '/images/btn/close.gif', '#', {:id=>@master_symbol.to_s+'_close', :alt => app_localized_message(:label, :btn_close)} %>
+    <%= icon_link_tag '/images/btn/destroy.gif', '#', {:id=>@master_symbol.to_s+'_destroy', :alt => app_localized_message(:label, :btn_destroy), :style=>"display:none;"} %>
+    <%= icon_link_tag '/images/btn/save.gif', '#', {:id=>@master_symbol.to_s+'_save', :alt => app_localized_message(:label, :btn_save)} %>
+  </div>
+
+</div><!--// endof x-window-body //-->
+</div><!--// endof dlg //-->

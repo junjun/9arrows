@@ -1,0 +1,60 @@
+/**
+ * Dialog
+ */
+div.dialog {
+    visibility : hidden;
+    position:absolute;
+    top:-1000px;
+    left:0px;
+}
+
+/*
+ * dlg
+ */
+.dlg_head{
+    border-bottom: 2px solid #0066cc;
+}
+
+.dlg_maincontent{
+}
+
+.dlg_bottom{
+    text-align:right;
+    padding-top: 5px;
+}
+
+.dlg_form_table{
+    width:100% ;
+    font-size:12px;
+    margin-top:2px;
+    margin-bottom:2px;
+    border-top:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
+    border-spacing: 0px;
+    border-collapse: 0px;
+}
+
+.dlg_form_table th {
+    width:60px;
+    padding: 3px 3px;
+    background-color:#f2f2f2;
+}
+
+.dlg_form_table td{
+    padding: 3px 3px;
+    background-color: #f2f2f2;
+}
+
+.dlg_form_table th.groupborder {
+    border-bottom:1px solid #CCCCCC;
+    padding: 3px;
+}
+
+.dlg_form_table td.groupborder {
+    border-bottom:1px solid #CCCCCC;
+    padding:3px;
+}
+
+.x-window-body {
+	padding: 10px;
+}

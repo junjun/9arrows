@@ -1,0 +1,63 @@
+<div id="header">
+
+  <div id="header_top">
+    <div id="logo">
+      <%= link_to('9arrows', root_path) %>
+    </div>
+    <div id="system_menu">
+      <ul>
+        <li id="current_user"><%=h @current_user.email %></li>
+        <li><%= link_to('アカウント', account_path) %></li>
+        <li><%= link_to('ログアウト', session_path, {:method => :delete}) %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="projects_tab">
+    <table>
+      <tr>
+        <td><%= link_to('All', projects_path) %></td>
+<% @active_projects.each do |p| -%>
+        <td class="<% if @current_project and @current_project.id == p.id%>active<% end %>"><%= link_to(h(p.project_name), project_path(p.project_cd)) %></td>
+<% end -%>
+        <td><%= link_to('New', new_project_path) %></td>
+      </tr>
+    </table>
+  </div>
+  <div id="current_project_info">
+<% if @current_project -%>
+    <span style="float:left;">
+      [&nbsp;<%=h @current_project.project_cd %>&nbsp;]
+      &nbsp;&nbsp;<%=h @current_project.project_name %>
+      &nbsp;&nbsp;<%= date_range(@current_project.start_date, @current_project.delivery_date) %>
+      <span class="project_users">
+<% @current_project.dat_projectusers.each_with_index do |pu, i| -%>
+<% if i > 0 %>,&nbsp;<% end -%><% if pu.mst_user %><%= pu.mst_user.user_name %><% else -%><%= pu.email %><% end -%>
+<% end -%>
+      </span>
+      <%= hidden_field :current_project, :project_cd %>
+      <%= hidden_field :current_project, :project_name %>
+    </span>
+    <span class="project_edit">
+      <%= link_to(app_localized_message(:label, :edit), edit_project_path(@current_project.project_cd)) %>
+    </span>
+<% else -%>
+    <span style="float:left;">プロジェクト一覧</span>
+<% end -%>
+  </div>
+
+  <div id="main_menu">
+    <ul>
+<% if @current_project -%>
+      <li><%= link_to('Dashboard', project_path(@current_project.project_cd)) %></li>
+      <li><%= link_to('WBS', wbs_project_path(@current_project.project_cd)) %></li>
+      <li><%= link_to('Gantt', gantt_project_path(@current_project.project_cd)) %></li>
+      <li><%= link_to('Calendar', calendar_project_path(@current_project.project_cd)) %></li>
+      <li><%= link_to('Files', project_files_path(@current_project.project_cd)) %></li>
+<% else -%>
+      <li><%= link_to('Dashboard', dashboard_path) %></li>
+<% end -%>
+    </ul>
+  </div>
+
+</div>

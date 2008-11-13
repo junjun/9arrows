@@ -1,0 +1,21 @@
+<%
+@master_symbol = :projects_file_edit_dialog
+-%>
+<div id="<%= @master_symbol %>" class="dialog">
+<div class='x-window-header'><%= image_tag("/images/etc/dlg_title_fil_upload.gif") %></div>
+<div class='x-window-body'>
+
+  <div class="dlg_maincontent">
+    <%= form_tag({:controller => 'projects'}, {:id => @master_symbol.to_s+'_form', :enctype => 'multipart/form-data'}) %>
+
+<%= render :partial => 'form_dialog' %>
+
+    </form>
+  </div>
+  <div class="dlg_bottom" style="text-align:right;">
+    <%= icon_link_tag '/images/btn/close.gif', '#', {:id=>@master_symbol.to_s+'_close', :alt => app_localized_message(:label, :btn_close)} %>
+    <%= icon_link_tag '/images/btn/save.gif', '#', {:id=>@master_symbol.to_s+'_save', :alt => app_localized_message(:label, :btn_save)} %>
+  </div>
+
+</div><!--// endof x-window-body //-->
+</div><!--// endof dlg //-->

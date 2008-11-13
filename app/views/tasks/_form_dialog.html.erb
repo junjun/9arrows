@@ -1,0 +1,94 @@
+
+        <%= hidden_field :dlg_tsk_edit_task, :id %>
+        <%= hidden_field :dlg_tsk_edit_comp, :id %>
+        <%= hidden_field :dlg_tsk_edit_comp, :project_id, {:value=>@current_project.id} %>
+        <%= hidden_field :dlg_tsk_edit_comp, :task_kbn %>
+        <span id="dlg_tsk_edit_hidden_area">
+        </span>
+
+        <table class="dlg_form_table" cellspacing="0">
+          <tr>
+            <th class="groupborder"><%= app_localized_message(:label, :task) %><span class="must_color">※</span></th>
+            <td class="groupborder">
+              <%= text_field :dlg_tsk_edit_comp, :item_name, :style => "width:100%;ime-mode:active;" %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= app_localized_message(:label, :priority) %></th>
+            <td style="padding:0;">
+              <table>
+                <tr>
+                  <td style="width:123px;">
+                    <%= select_for_codes(:dlg_tsk_edit_task, :priority_kbn, [1, 2, 3]) %>
+                  </td>
+                  <th><%= app_localized_message(:label, :plan_power) %></th>
+                  <td>
+                    <%= text_field :dlg_tsk_edit_task, :plan_power, :style => "width:30px;ime-mode:disabled;text-align:right;" %>
+                  </td>
+                  <td>
+                    <%= select_for_codes(:dlg_tsk_edit_task, :tani_kbn, [2, 3]) %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <th><%= app_localized_message(:label, :complete_date) %></th>
+            <td>
+              <%= text_field :dlg_tsk_edit_task, :complete_date, :style => "width:80px;ime-mode:disabled;", :maxlength => "10" %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= app_localized_message(:label, :range) %></th>
+            <td style="padding:0;">
+              <table>
+                <tr>
+                  <td style="width:100px;">
+                    <%= text_field :dlg_tsk_edit_task, :start_date, :style => "width:80px;ime-mode:disabled;", :maxlength => "10" %>
+                  </td>
+                  <td style="width:20px;">
+                    ～
+                  </td>
+                  <td>
+                    <%= text_field :dlg_tsk_edit_task, :end_date, :style => "width:80px;ime-mode:disabled;", :maxlength => "10" %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <th><%= app_localized_message(:label, :client_user) %></th>
+            <td id="dlg_tsk_edit_form_table">
+              <%= select_for_users(:dlg_tsk_edit_task, :client_user_id, @current_project.id) %>
+            </td>
+          </tr>
+          <tr>
+            <th class="groupborder">
+              <%= app_localized_message(:label, :charge_user) %>
+            </th>
+            <td class="groupborder">
+                <a href="#"><%= image_tag("/images/btn/select.gif", {:alt=>app_localized_message(:label, :btn_select), :id=>"dlg_tsk_edit_tuselect", :align=>"absmiddle"}) %></a>
+                <span id="dlg_tsk_edit_taskusers_user_name"></span>
+            </td>
+          </tr>
+          <tr>
+            <th class="groupborder"><%= app_localized_message(:label, :result) %></th>
+            <td class="groupborder">
+              <%= text_area :dlg_tsk_edit_task, :result, :style=>"width:100%;", :rows=>3 %>
+            </td>
+          </tr>
+          <tr>
+            <th class="groupborder"><%= app_localized_message(:label, :memo) %></th>
+            <td class="groupborder">
+              <%= text_area :dlg_tsk_edit_task, :memo, :style=>"width:100%;", :rows=>3 %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= app_localized_message(:label, :class_word) %></th>
+            <td>
+              <%= text_field :dlg_tsk_edit_comp, :class_word1, :style => "width:100%;ime-mode:active;margin-bottom: 2px;" %>
+              <%= text_field :dlg_tsk_edit_comp, :class_word2, :style => "width:100%;ime-mode:active;margin-bottom: 2px;" %>
+              <%= text_field :dlg_tsk_edit_comp, :class_word3, :style => "width:100%;ime-mode:active;" %>
+            </td>
+          </tr>
+        </table>

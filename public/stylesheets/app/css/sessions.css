@@ -1,0 +1,18 @@
+
+div.container { margin-top:160px; text-align:center; }
+
+div#login_form_wrapper {
+    width:310px; height: 160px; padding-top:54px;text-align:center; margin-left:auto; margin-right:auto; /* layout */
+    background-image:url('../i/bg_login_form.gif'); background-repeat:no-repeat; /* background */
+}
+table#login_form_table { margin-left:auto; margin-right:auto; }
+table#login_form_table th, table#login_form_table td { padding: 2px 0px 2px 0px; }
+table#login_form_table th { text-align:right; color:#FFFFFF; padding-right:5px; }
+table#login_form_table td {  }
+table#login_form_table td.submit_area { text-align:right; }
+
+div#to_signup { text-align:left; padding-left:10px; }
+div#to_signup a {
+	padding-left:10px; color:#FFFFFF; font-size: 12px;
+	background-image:url('../i/icon/signup_prefix.gif'); background-repeat:no-repeat; background-position: left center;
+}

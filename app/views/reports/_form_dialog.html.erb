@@ -1,0 +1,40 @@
+
+                <%= hidden_field :dlg_tsk_report_task, :id %>
+                <span id="dlg_tsk_report_hidden_area">
+                </span>
+
+                <table class="dlg_form_table" cellspacing="0">
+                    <tr>
+                        <th class="groupborder"><%= app_localized_message(:label, :report_date) %><span class="must_color">※</span></th>
+                        <td class="groupborder">
+                            <%= text_field :dlg_tsk_report_task, :report_date, :style => "width:80px;ime-mode:disabled;", :maxlength => "10" %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="groupborder"><%= app_localized_message(:label, :progress_rate) %><span class="must_color">※</span></th>
+                        <td class="groupborder" style="padding:0px;">
+                            <table class="dlg_form_table" cellspacing="0" style="border:0px;margin:0px;">
+                                <tr>
+                                    <td style="width:80px;">
+                                        <%= select_for_codes(:dlg_tsk_report_task, :progress_rate, [0,1,2,3,4,5,6,7,8,9,10], {}, :style=>"width:80px;" ) %>
+                                    </td>
+                                    <th style="text-align:right;padding-right:5px;width:5px;">&nbsp;</th>
+                                    <th style="text-align:right;padding-right:5px;width:5px;">&nbsp;</th>
+                                    <td style="width:10px;padding:0;">
+                                        <input id="dlg_tsk_report_task_progress_kbn" name="dlg_tsk_report_task[progress_kbn]" type="checkbox" value="3" />
+                                    </td>
+                                    <td>
+                                        &nbsp;<%= app_localized_message(:label, :complete) %>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><%= app_localized_message(:label, :memo) %></th>
+                        <td>
+                            <%= text_area :dlg_tsk_report_task, :memo, :style=>"width:100%;", :rows=>3 %>
+                        </td>
+                    </tr>
+                </table>

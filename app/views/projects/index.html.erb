@@ -1,0 +1,46 @@
+<% content_for(:add_scripts) do -%>
+<%= javascript_include_tag("app/projects/index") %>
+<% end -%>
+
+<table class="fill">
+  <tr>
+    <td class="content_header">
+      <table>
+        <tr>
+          <th><h1>Dashboard</h1></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="content_body">
+
+      <%- for project in @projects -%>
+        <span style="float:left;margin:10px;">
+          <div style="width:250px;font-family:verdana,tahoma,helvetica;font-size:12px;margin-bottom:3px;background-color:#F6F7F8;border:1px solid #d7d7d7">
+            <div style="height:18px;text-align:right;padding:3px;background-color:#eeeeee;color:#666666;font-weight:bold;border-bottom:1px solid #d7d7d7;">
+                <span id="remote_form_<%= project.id.to_s %>" style="float:left;">
+                  <%= hidden_field( :project, :id, :value=>project.id ) %>
+                  <%= disp_project_name(project) %>
+                </span>
+                <span style="white-space:nowrap;">
+                  <span id="update_active_link_add_<%= project.id.to_s %>" style="display:<%= @active_project_ids.include?(project.id) ? 'none' : 'block' %>">
+                  <%= link_to(app_localized_message(:label, :add_tab), '#', {:class=>"update_active_link_add"}) %>
+                  </span>
+                  <span id="update_active_link_remove_<%= project.id.to_s %>" style="display:<%= @active_project_ids.include?(project.id) ? 'block' : 'none' %>">
+                  <%= link_to(app_localized_message(:label, :del_tab), '#', {:class=>"update_active_link_remove"}) %>
+                  </span>
+                </span>
+            </div>
+            <div id="navi_project_detail_<%= project.id.to_s %>" style="height:120px;overflow:auto;padding:5px;">
+              <%= (range = disp_date_range(project)) == '&nbsp;' ? '' : '<span style="font-weight:bold;">' + app_localized_message(:label, :range) + '</span>：<span style="padding-left:10px;">' + range + '</span><br>' %>
+              <%= '<span style="font-weight:bold;">' + app_localized_message(:label, :part_members) + '</span>：' %>
+              <%= disp_projectusers(project) %>
+            </div>
+          </div>
+        </span>
+      <%- end -%>
+
+    </td>
+  </tr>
+</table>

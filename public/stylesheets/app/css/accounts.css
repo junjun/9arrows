@@ -1,0 +1,10 @@
+/**
+ * Accouts
+ */
+div.content { margin:20px; }
+
+table#account_form_table { }
+table#account_form_table th, table#account_form_table td { padding:5px; }
+table#account_form_table td.submit_area { padding-top:10px; text-align:right; }
+
+table#account_form_table table.radio_table td { padding:0; }

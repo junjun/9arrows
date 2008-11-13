@@ -1,0 +1,20 @@
+<%
+@master_symbol = :projects_task_confirm_dialog
+-%>
+<div id="<%= @master_symbol %>" class="dialog">
+<div class='x-window-header'><%= image_tag("/images/etc/dlg_title_tskconfirm.gif") %></div>
+<div class='x-window-body'>
+
+  <div class="dlg_maincontent">
+    <%= form_tag({:controller => 'projects'}, {:id => @master_symbol.to_s+'_form'}) %>
+
+<%= render :partial => 'form_dialog' %>
+
+    </form>
+  </div>
+  <div class="dlg_bottom">
+    <%= icon_link_tag '/images/btn/close.gif', '#', {:id=>@master_symbol.to_s+'_close', :alt => app_localized_message(:label, :btn_close)} %>
+  </div>
+
+</div><!--// endof x-window-body //-->
+</div><!--// endof dlg //-->

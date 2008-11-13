@@ -1,0 +1,97 @@
+#gantt_grid_panel .x-layout-panel{
+    border : 0px;
+}
+#gantt_grid_panel .x-grid-header {
+    background:#EEEEEE scroll 0%;
+    border-bottom:1px solid #cccccc;
+    height:35px;
+    text-align:center ;
+}
+#gantt_grid_panel .x-grid-header table{
+    height:100%;
+}
+#gantt_grid_panel .x-grid-locked  .x-grid-header {
+    background:#CCCCCC;
+    border-right:0px;
+}
+#gantt_grid_panel .x-grid-locked  .x-grid-hd {
+    padding-right:0px;
+}
+#gantt_grid_panel .x-grid-hd-text {
+    padding-top:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom:0px;
+}
+
+#gantt_grid_panel .x-grid-locked .x-grid-hd-text {
+    padding-top : 10px;
+    padding-left : 10px;
+    color:#666666;
+    font-weight:bold;
+}
+
+#gantt_grid_panel .x-grid-body{
+}
+
+#gantt_grid_panel .x-grid-col{
+    border-right:0px solid #ffffff;
+    background-image : url('../i/icon/bg_gantt.gif') ;
+}
+
+#gantt_grid_panel .x-grid-locked .x-grid-col{
+    background-image : url() ;
+}
+
+#gantt_grid_panel .x-grid-cell-text{
+    padding:5px 0px 0px 0px;
+}
+
+#gantt_grid_panel .x-grid-locked .x-grid-cell-text{
+    padding:3px 5px;
+}
+
+#gantt_grid_panel .x-grid-row td{
+    height:24px;
+}
+
+#gantt_grid_panel .x-grid-locked .x-grid-header table{
+}
+
+.x-grid-split {
+    background-image : url() ;
+}
+
+
+#gantt_grid_panel .i3_extension_row_complete .x-grid-cell-text{
+    color : #999999;
+}
+
+#gantt_grid_panel .i3_extension_row_task_low .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_priority_low.gif') no-repeat ;
+}
+#gantt_grid_panel .i3_extension_row_task_low_complete .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_priority_low_complete.gif') no-repeat ;
+}
+#gantt_grid_panel .i3_extension_row_task_high .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_priority_high.gif') no-repeat;
+}
+#gantt_grid_panel .i3_extension_row_task_high_complete .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_priority_high_complete.gif') no-repeat ;
+}
+#gantt_grid_panel .i3_extension_row_milestone .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_milestone.gif') no-repeat;
+}
+#gantt_grid_panel .i3_extension_row_event .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_event.gif') no-repeat;
+}
+#gantt_grid_panel .i3_extension_row_complete .i3_extension_progress_icon{
+    background : url('../i/icon/icon_complete.gif') no-repeat;
+}
+#gantt_grid_panel .i3_extension_row_groups_expand_true .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_minus.gif') no-repeat;
+}
+
+#gantt_grid_panel .i3_extension_row_groups_expand_false .i3_extension_prefix_icon{
+    background : url('../i/icon/icon_plus.gif') no-repeat;
+}

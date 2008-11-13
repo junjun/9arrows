@@ -1,0 +1,104 @@
+<% content_for :add_scripts do -%>
+<%= javascript_include_tag("app/account/edit") %>
+<% end -%>
+<% content_for :add_styles do -%>
+<%= stylesheet_link_tag('app/css/accounts') %>
+<% end -%>
+
+<table class="fill">
+  <tr class="content_header">
+    <th><h1>Account</h1></th>
+  </tr>
+  <tr>
+    <td class="content_body">
+
+<div class="content">
+
+<%= error_messages_for :user %>
+<% form_for(:user, :url => account_path, :html => {:method =>:put, :id => 'account_form', :name => 'account_form'}) do |f| -%>
+<table id="account_form_table">
+  <tr>
+    <th width="100"><label for="user_login_id"><%= app_localized_message(:label, :user_login_id) %></label></th>
+    <td><%=h @user.login_id %></td>
+  </tr>
+  <tr>
+    <th><label for="user_user_name"><%= app_localized_message(:label, :user_name) %> <span class="must_color">※</span></label></th>
+    <td><%= f.text_field :user_name, :style => "ime-mode: active;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_email"><%= app_localized_message(:label, :email) %> <span class="must_color">※</span></label></th>
+    <td><%= f.text_field :email, :style => "ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_srcpassword"><%= app_localized_message(:label, :password) %> <span class="must_color">※</span></label></th>
+    <td><%= f.password_field :srcpassword, :style => 'width:80px;ime-mode: disabled;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_name"><%= app_localized_message(:label, :name) %></label></th>
+    <td><%= f.text_field :name, :style => "ime-mode: active;" %></td>
+  </tr>
+  <tr>
+    <th><%= app_localized_message(:label, :sex) %></th>
+    <td>
+      <table class="radio_table">
+        <tr>
+          <td><%= f.radio_button :sex, 1 %></td>
+          <td>&nbsp;<label for="user_sex_1"><%= app_localized_message(:label, :sex_1) %></label></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><%= f.radio_button :sex, 2 %></td>
+          <td>&nbsp;<label for="user_sex_2"><%= app_localized_message(:label, :sex_2) %></label></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <th><label for="user_birthday"><%= app_localized_message(:label, :birthday) %></label></th>
+    <td><%= f.text_field :birthday, :style => 'width:80px;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_company_name"><%= app_localized_message(:label, :company_name) %></label></th>
+    <td><%= f.text_field :company_name, :style => 'width:200px;ime-mode: active;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_section_name"><%= app_localized_message(:label, :section_name) %></label></th>
+    <td><%= f.text_field :section_name, :style => 'width:200px;ime-mode: active;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_zip"><%= app_localized_message(:label, :zip) %></label></th>
+    <td><%= f.text_field :zip, :maxlength => '8', :style => "width:80px;ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_prefecture"><%= app_localized_message(:label, :prefecture) %></label></th>
+    <td><%= f.text_field :prefecture, :maxlength => '10', :style => "width:100px;ime-mode: active;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_address1"><%= app_localized_message(:label, :address1) %></label></th>
+    <td><%= f.text_field :address1, :style=>'width:300px;ime-mode: active;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_address2"><%= app_localized_message(:label, :address2) %></label></th>
+    <td><%= f.text_field :address2, :style=>'width:300px;ime-mode: active;' %></td>
+  </tr>
+  <tr>
+    <th><label for="user_tel"><%= app_localized_message(:label, :tel) %></label></th>
+    <td><%= f.text_field :tel, :maxlength => '14', :style => "width:120px;ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_fax"><%= app_localized_message(:label, :fax) %></label></th>
+    <td><%= f.text_field :fax, :maxlength => '14', :style => "width:120px;ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_skyp_id"><%= app_localized_message(:label, :skype_id) %></label></th>
+    <td><%= f.text_field :skype_id, :style=>'width:300px;ime-mode: inactive;' %></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="submit_area"><button id='btn_save' type="button"><%= app_localized_message(:label, :edit_user) %></button></td>
+  </tr>
+</table>
+<% end -%>
+
+</div>
+
+    </td>
+  </tr>
+</table>

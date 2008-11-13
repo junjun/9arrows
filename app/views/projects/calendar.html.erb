@@ -1,0 +1,55 @@
+<% content_for :add_styles do -%>
+<%= stylesheet_link_tag(['app/css/project_calendar']) %>
+<% end -%>
+<% content_for :add_scripts do -%>
+<%= javascript_include_tag([
+    'components/projects/task_edit_dialog',
+    'components/projects/milestone_edit_dialog',
+    'components/projects/event_edit_dialog',
+    'components/projects/member_select_dialog',
+    'components/projects/calendar_panel',
+    'app/projects/calendar']) %>
+<% end -%>
+<table class="fill">
+  <tr class="content_header">
+    <th><h1>Calendar</h1></th>
+    <td>
+      <%= link_to_function( image_tag('/images/btn/task.gif',      {:border => 0, :align=>"absmiddle", :alt=>''}), :id=>'projects_calendar_btn_add_task' ) %>
+      <%= link_to_function( image_tag('/images/btn/milestone.gif', {:border => 0, :align=>"absmiddle", :alt=>''}), :id=>'projects_calendar_btn_add_milestone', :style=>"margin: 0 5px;" ) %>
+      <%= link_to_function( image_tag('/images/btn/event.gif',     {:border => 0, :align=>"absmiddle", :alt=>''}), :id=>'projects_calendar_btn_add_event' ) %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" id="calendar_panel_wrapper" style="vertical-align:top;padding:5px;">
+
+<div id="calendar_dataGridHeader">
+<table id="calendar_header" class="fill scrolltablestyle">
+  <thead>
+  <tr>
+<% 7.times do |i| -%>
+    <th class="<%= 'last' if i==6  %>"><%= @calendar.weekday(i) %></th>
+<% end -%>
+  </tr>
+  </thead>
+</table>
+</div>
+<div id="calendar_dataGridContent">
+<div id="calendar_dataGridContentBars" style="height:0px;"></div>
+<table id="calendar_body" class="fill scrolltablestyle">
+  <tbody>
+<% @calendar.days.each do |d| -%>
+<% if d.week_first? -%>
+  <tr>
+<% end -%>
+    <td class="<%= d.css_class %>" id="calendar_day_<%= d.date.strftime('%Y%m%d') %>"><span class="date"><%= d.show %></span></td>
+<% if d.week_last? -%>
+  </tr>
+<% end -%>
+<% end -%>
+  </tbody>
+</table>
+</div>
+<!--// endof calendar //-->
+    </td>
+  </tr>
+</table>

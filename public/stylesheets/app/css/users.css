@@ -1,0 +1,16 @@
+
+/*
+ * override contents style
+ */
+
+div#contents { background-color:#FFFFFF; padding:20px; }
+
+h2 { border-bottom:4px solid #0060c0; padding-left:10px; margin-bottom: 10px; line-height: 25px; }
+
+table#layout td#layout_header_nomenu { height:40px; vertical-align:bottom; }
+table#signup_form_table th, table#signup_form_table td { padding:5px; }
+table#signup_form_table th { text-align:right; }
+table#signup_form_table td.submit_area { text-align:right; }
+
+td#layout_contents { background-color:#C8E3FF; padding: 20px; }
+

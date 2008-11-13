@@ -1,0 +1,26 @@
+
+
+div#calendar_dataGridHeader { width:100%; padding-top:0px; overflow-y:scroll; display:none; }
+table#calendar_header th {
+    height: 22px;
+    vertical-align: middle;
+    background-color: #FFFFD9;
+    border: 1px solid #999999;
+    text-align: center;
+}
+table#calendar_header thead tr th.last { border-right:0px none;}
+
+div#calendar_dataGridContent { display:none; overflow-y:scroll; height:100%; position: relative;}
+
+table#calendar_body { border-collapse:collapse; }
+
+div#calendar_dataGridContentBars { position: absolute; top:-100000px; left:0; }
+table#calendar_body thead { position: absolute; top:0; left:0; }
+
+table#calendar_body tbody tr td { height:100px; padding: 2px 2px; border:1px solid #999999; text-align:left;}
+table#calendar_body tbody tr td.date_fill { background-color:#F0F0F0;color:#AAAAAA; }
+table#calendar_body tbody tr td.last { border-right:0px none;}
+
+table#calendar_body tbody tr td span.date { font-weight:bold;float:right; }
+table#calendar_body tbody tr td.sat span.date { color:#0000FF; }
+table#calendar_body tbody tr td.sun span.date { color:#FF0000; }

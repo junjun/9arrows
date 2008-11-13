@@ -1,0 +1,53 @@
+<%
+master_symbol = :files
+master_name   = 'Files'
+-%>
+
+<% content_for(:add_scripts) do -%>
+<%= javascript_include_tag("components/projects/folder_edit_dialog") %>
+<%= javascript_include_tag("components/projects/file_edit_dialog") %>
+
+<%= javascript_include_tag("components/projects/#{master_symbol}_grid") %>
+<%= javascript_include_tag("app/projects/#{master_symbol}") %>
+<% end -%>
+<% content_for(:add_styles) do -%>
+<%= stylesheet_link_tag('app/css/list_files_grid') %>
+<% end -%>
+
+<table class="fill">
+  <tr>
+    <td class="content_header">
+      <table>
+        <tr>
+          <th><h1><%= master_name %></h1></th>
+          <td>
+            <%= form_tag({:controller => 'projects'}, {:id => 'file_target_file_form'}) %>
+              <%= hidden_field_tag :file_target_file %>
+            </form>
+            <form name="projectfile_download" id="projectfile_download" method="get" target="pro_index_file_download_post_frame">
+              <%= hidden_field_tag :projectfile_download_parent_node %>
+              <%= hidden_field_tag :projectfile_download_target_file %>
+              <%= hidden_field_tag :projectfile_download_browser_ie %>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="content_body">
+      <table class="fill">
+        <tr>
+          <td class="content_left" width="200">
+            <div id="file_index_folder_area"></div>
+          </td>
+          <td class="content_center">
+            <div id="file_index_file_area">
+              <div id="file_index_file" class="x-panel"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

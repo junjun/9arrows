@@ -1,0 +1,26 @@
+<%
+require 'parsedate'
+# plan_date_arr	= ParseDate.parsedate(@plan[:plan_date])
+# plan_date		= plan_date_arr[0].to_s + "/" + plan_date_arr[1].to_s + "/" + plan_date_arr[2].to_s
+
+# reserve_no	= @plan[:reserve_no]
+# charge_name	= NKF.nkf('-s', @charge.charge_name)
+# exhaust_trader_name	= NKF.nkf('-s', @plan[:exhaust_trader_name])
+# exhaust_charge_name	= NKF.nkf('-s', @plan[:exhaust_charge_name])
+# wasteclass_disp_name	= NKF.nkf('-s', @plan[:wasteclass_disp_name])
+
+
+
+%>
+<%= @user.user_name %> さま
+
+「9arrows」へサインアップありがとうございます。
+
+下記のページから、ユーザーID・仮パスワードでログインし、
+パスワードを変更してください。
+
+ユーザー情報変更：<%= @info[:url_profile] %>
+
+ユーザーID:<%= @user.email %>
+パスワード：<%= @info[:password] %>
+

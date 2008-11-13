@@ -1,0 +1,137 @@
+<% content_for(:add_scripts) do -%>
+<%= javascript_include_tag("components/projects/task_report_dialog") %>
+<%= javascript_include_tag("components/projects/task_confirm_dialog") %>
+<%= javascript_include_tag("app/projects/show") %>
+<% end -%>
+
+<table class="fill">
+    <tr class="content_header">
+        <th><h1>Dashboard</h1></th>
+    </tr>
+    <tr>
+        <td style="padding: 20px;">
+
+                <div id="content_dsd" style="width:100%;height:100%;">
+                    <%= hidden_field :project, :id    %>
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;height:100%;">
+                        <tr>
+                            <td id="task_block_list" style="height:80%;width:50%;vertical-align:top;padding-bottom:20px;padding-right:15px;">
+
+                                <!-- ▼ Todo -->
+                                <div id="blk_content">
+                                    <div id="blk_content_head" style="border-bottom:2px solid #0066cc;">
+                                        <%= image_tag("/images/etc/blk_title_dsd_1.gif", {:alt=>""}) %>
+                                    </div>
+                                    <div id="blk_content_main">
+                                        <table class="blk_content_table" border="0" cellspacing="0" cellpadding="0">
+                                            <%- for @task in @tasks 
+                                                if @task.progress_kbn == 3
+                                                    color = '#cccccc'
+                                                else
+                                                    color = '#000000'
+                                                end
+                                            -%>
+	                                        <tr id="block_list_task_row_<%= @task.project_tree_id.to_s %>" style="color:<%= color %>;">
+	                                            <td width="41">
+	                                              <%= disp_today_icon( @task.dat_projectcomp ) %>
+	                                            </td>
+	                                            <td width="15"><%= disp_priority( @task.dat_projectcomp ) %></td>
+	                                            <td><%= disp_detail_name( @task.dat_projectcomp ) %></td>
+	                                            <td width="80"><%= disp_comp_exp_date( @task.dat_projectcomp ) %></td>
+	                                            <td width="100" style="text-align:right;">
+	                                                <span id="block_list_task_form_<%= @task.id %>">
+	                                                    <%= hidden_field :task, :id  %>
+	                                                </span>
+                                                    <%= link_to_function( app_localized_message( :label, :confirmation )  , "$page.onTskConfir('" + @task.project_tree_id.to_s + "')" ) %>&nbsp;｜
+                                                    <%= link_to_function( app_localized_message( :label, :report )        , "$page.onTskReport('" + @task.project_tree_id.to_s + "')" ) %>
+	                                            </td>
+	                                        </tr>
+                                            <%- end -%>
+                                        </table>
+                                    </div>
+                                    <div id="blk_content_bottom">
+                                    </div>
+                                </div>
+                                <!-- ▲ Todo -->
+
+                            </td>
+                            <td style="height:80%;width:50%;vertical-align:top;padding-bottom:20px;padding-left:15px;">
+
+                                <!-- ▼ Event -->
+                                <div id="blk_content">
+                                    <div id="blk_content_head" style="border-bottom:2px solid #009900;">
+                                        <%= image_tag("/images/etc/blk_title_dsd_3.gif", {:alt=>""}) %>
+                                    </div>
+                                    <div id="blk_content_main">
+                                        <table class="blk_content_table">
+                                        <%- for event in @events -%>
+                                            <tr>
+                                                <td><%= disp_detail_name( event.dat_projectcomp ) %></td>
+                                            </tr>
+                                        <%- end -%>
+                                        </table>
+                                    </div>
+                                    <div id="blk_content_bottom">
+                                    </div>
+                                </div>
+                                <!-- ▲ Event -->
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="task_block_infolist" style="height:20%;vertical-align:top;padding-right:15px;">
+
+                                <!-- ▼ Information -->
+                                <div id="blk_content" style="">
+                                    <div id="blk_content_head" style="border-bottom:2px solid #ff0000;">
+                                        <%= image_tag("/images/etc/blk_title_dsd_5.gif", {:alt=>""}) %>
+                                    </div>
+                                    <div id="blk_content_main" style="height:100px;overflow-y:auto;">
+                                        <table class="blk_content_table" border="0" cellspacing="0" cellpadding="0">
+                                        <%- for log in @projectlogs
+                                          next if log.log_kbn == 3
+                                        -%>
+                                            <tr>
+                                                <td>
+                                                    <%= fmt_time(log.created_on, :Y2MD) %>&nbsp;&nbsp;<%= disp_projectlog_information(log) %>
+                                                </td>
+                                            </tr>
+                                        <%- end -%>
+                                        </table>
+                                    </div>
+                                    <div id="blk_content_bottom">
+                                    </div>
+                                </div>
+                                <!-- ▲ Information -->
+
+                            </td>
+                            <td style="height:20%;vertical-align:top;padding-left:15px;" id="prujectuser_block_list">
+
+                                <!-- ▼ Member -->
+                                <div id="blk_content">
+                                    <div id="blk_content_head" style="border-bottom:2px solid #ff9900;">
+                                        <%= image_tag("/images/etc/blk_title_dsd_6.gif", {:alt=>""}) %>
+                                    </div>
+                                    <div id="blk_content_main">
+                                        <table class="blk_content_table" border="0" cellspacing="0" cellpadding="0">
+                                        <%- for projectuser in @projectusers -%>
+                                            <tr>
+                                                <td><%=h disp_projectuser_name(projectuser) %></td>
+                                                <td width="30"><%= disp_projectuser_skype_icon(projectuser) %></td>
+                                            </tr>
+                                        <%- end -%>
+                                        </table>
+                                    </div>
+                                    <div id="blk_content_bottom">
+                                    </div>
+                                </div>
+                                <!-- ▲ Member -->
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+        </td>
+    </tr>
+</table>

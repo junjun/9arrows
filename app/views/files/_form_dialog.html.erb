@@ -1,0 +1,11 @@
+
+    <%= hidden_field_tag :dlg_fil_upload_parent_node %>
+    <%= hidden_field_tag :dlg_fil_upload_upload_file_name %>
+    <table class="dlg_form_table" cellspacing="0">
+      <tr>
+        <th><pre><%= app_localized_message(:label, :upload_file) %></pre></th>
+        <td>
+          <%= file_field_tag :dlg_fil_upload_upload_file, :style => "width:100%;" %>
+        </td>
+      </tr>
+    </table>

@@ -1,0 +1,60 @@
+
+	    <%= hidden_field :dlg_evt_edit_event, :id %>
+	    <%= hidden_field :dlg_evt_edit_comp, :id %>
+	    <%= hidden_field :dlg_evt_edit_comp, :project_id, {:value=>@current_project.id} %>
+	    <%= hidden_field :dlg_evt_edit_comp, :task_kbn %>
+	    <span id="dlg_evt_edit_hidden_area">
+	    </span>
+    <table class="dlg_form_table" cellspacing="0">
+      <tr>
+        <th class="groupborder"><%= app_localized_message(:label, :event) %><span class="must_color">※</span></th>
+        <td class="groupborder">
+          <%= text_field :dlg_evt_edit_comp, :item_name, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :start_datetime) %></th>
+        <td>
+          <%= text_field :dlg_evt_edit_event, :start_date, :style => "width:80px;ime-mode:disabled;margin-bottom: 3px;", :maxlength => "10" %>
+          <%= time_text_field :dlg_evt_edit_event, :start_time, :style => "width:80px;ime-mode:disabled;text-align:right;", :maxlength => "10" %>～
+          <%= time_text_field :dlg_evt_edit_event, :end_time, :style => "width:80px;ime-mode:disabled;text-align:right;", :maxlength => "10" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :place) %></th>
+        <td>
+          <%= text_field :dlg_evt_edit_event, :place, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th class="groupborder"><%= app_localized_message(:label, :charge_user) %></th>
+        <td class="groupborder">
+          <%= image_tag("/images/btn/select.gif", :id=>"dlg_evt_edit_euselect", :align=>"absmiddle") %>
+          <span id="dlg_evt_edit_eventusers_user_name"></span>
+        </td>
+      </tr>
+      <tr>
+        <th class="groupborder"><%= app_localized_message(:label, :content) %></th>
+        <td class="groupborder">
+          <%= text_area :dlg_evt_edit_event, :content, :style=>"width:100%;", :rows=>5 %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word1) %></th>
+        <td>
+          <%= text_field :dlg_evt_edit_comp, :class_word1, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word2) %></th>
+        <td>
+          <%= text_field :dlg_evt_edit_comp, :class_word2, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word3) %></th>
+        <td>
+          <%= text_field :dlg_evt_edit_comp, :class_word3, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+    </table>

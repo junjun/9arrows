@@ -1,0 +1,27 @@
+
+<div id="login_form_wrapper">
+<% form_tag session_path do %>
+<table id="login_form_table">
+  <tr>
+    <th><label for="login_id"><%= app_localized_message(:label, :login) %></label></th>
+    <td><%= text_field_tag 'login_id', '', :style => 'width: 120px;ime-mode: inactive;' %></td>
+  </tr>
+  <tr>
+    <th><label for="password"><%= app_localized_message(:label, :password) %></label></th>
+    <td><%= password_field_tag 'srcpassword', '', :style => 'width: 120px;' %></td>
+  </tr>
+<!--
+  <tr>
+    <th><label for="remember_me">Remember me:</label></th>
+    <td><%= check_box_tag 'remember_me' %></td>
+ </tr>
+-->
+  <tr>
+    <td colspan="2" class="submit_area"><%= image_submit_tag 'btn/login.gif' %></td>
+ </tr>
+</table>
+<div id="to_signup">
+<%= link_to(app_localized_message(:label, :to_signup), new_user_path) %>
+</div>
+<% end -%>
+</div>

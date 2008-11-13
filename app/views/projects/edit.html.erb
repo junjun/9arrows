@@ -1,0 +1,127 @@
+<% content_for(:add_scripts) do -%>
+<%= javascript_include_tag("app/projects/edit") %>
+<% end -%>
+
+<table class="fill">
+  <tr>
+    <td class="content_header">
+      <table>
+        <tr>
+          <th><h1>Project <%= @project.id.nil? ? "Create" : "Update" %></h1></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="content_body">
+      <div id="content_pro" style="width:100%;height:100%;">
+
+          <%- if @project.id.nil? -%>
+          <%= form_tag(projects_path, :name=>"edit_project_form", :id=>"edit_project_form", :method=>'POST') %>
+          <%- else -%>
+          <%= form_tag(project_path(@project.project_cd), :name=>"edit_project_form", :id=>"edit_project_form", :method=>'PUT') %>
+          <%- end -%>
+          <%= hidden_field :project, :id %>
+          <table id="form_table_1" border="0" cellspacing="10" style="margin:20px;">
+            <tr>
+              <td width="120"><%= page_label(:label, :project_name) %> <span class="must_color">※</span></td>
+              <td width="300"><%= text_field :project, :project_name, :style => "width:212px;ime-mode: active;", :maxlength => "40" %></td>
+              <td><%= image_tag("/images/s.gif", :width=>"100px", :height=>"1px") %></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><%= error_message_on(:project, :project_name) %></td>
+            </tr>
+            <tr>
+              <td><%= page_label(:label, :project_cd) %> <span class="must_color">※</span></td>
+              <td><%= text_field :project, :project_cd, :style => "width:212px;ime-mode: disabled;", :maxlength => "40" %></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><%= error_message_on(:project, :project_cd) %></td>
+            </tr>
+            <tr>
+              <td><%= page_label(:label, :end_user_name) %> <span class="must_color">※</span></td>
+              <td><%= text_field :project, :end_user_name, :style => "width:212px;ime-mode: active;", :maxlength => "255" %></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><%= error_message_on(:project, :end_user_name) %></td>
+            </tr>
+            <tr>
+              <td><%= page_label(:label, :range) %> <span class="must_color">※</span></td>
+              <td><table cellpadding="0" cellspacing="0" border="0">
+                  <td><%= text_field :project, :start_date, :style => "width:80px;ime-mode: disabled;", :maxlength => "10" %></td>
+                  <td>&nbsp;～&nbsp;</td>
+                  <td><%= text_field :project, :delivery_date, :style => "width:80px;ime-mode: disabled;", :maxlength => "10" %></td>
+                  </table>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><%= error_message_on(:project, :start_date) %><%= error_message_on(:project, :delivery_date) %></td>
+            </tr>
+            <tr>
+              <td><%= page_label(:label, :template) %></td>
+              <td><%= select(:template, :id, @templates.collect {|p| [ p.template_name, p.id ] }, {:include_blank => true} ) %></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td valign="top"><%= page_label(:label, :part_members) %></td>
+              <td id="email_area_pro_inp">
+                <div id="email_pro_inp_0">自分<%= hidden_field_tag "users[]", @current_user.email, :style => "width:100%;ime-mode:disabled;margin-bottom:2px;", :maxlength => "256", :id => ('users_0') %>&nbsp;</div>
+                <%- 
+                cnt = 0
+                @project.dat_projectusers.each_index do | index |
+                  cnt += 1
+                  @user = @project.dat_projectusers[index] -%>
+                  <%- if @project.dat_projectusers[index].email != @current_user.email && !@project.dat_projectusers[index].email.blank? -%>
+
+                <div id="email_pro_inp_<%= cnt %>">
+                  <%= text_field_tag "users[]", @project.dat_projectusers[index].email, :style => "width:212px;ime-mode:disabled;margin-bottom:2px;", :class => 'members_field', :maxlength => "256", :id => ('users_' + cnt.to_s) %>&nbsp;<%= link_to_function( page_label(:label, :del), "$page.onEmailFieldRemove('email_pro_inp_"+cnt.to_s+"');" ) %>
+                </div>
+
+                  <%- end  -%>
+                <%- end  -%>
+                <%= hidden_field_tag :members_cnt, cnt %>
+                <script type="text/javascript"> email_pro_inp_field_count = <%= @project.dat_projectusers.size %> ; </script>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td style="text-align:right;padding-right: 85px;"><%= link_to_function( page_label(:label, :add_address), "$page.onEmailFieldAdd('email_area_pro_inp');" ) %></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:right;padding-right: 85px;padding-top:5px;">
+                <%- if @project.id.nil? -%>
+                <%= button_to_function(app_localized_message(:label, :add_project), "", :id=>"btn_add_project") %>
+                <%- else -%>
+                <%= button_to_function(app_localized_message(:label, :edit_project), "", :id=>"btn_edit_project") %>
+                <%= button_to_function(app_localized_message(:label, :destroy_project), "if(!confirm('"+app_localized_message(:confirm, :destroy_confirm)+"')) return false; this.form.action='"+ project_path(@project.project_cd) +"' ; this.form.method='DELETE'; this.form.submit();") %>
+                <%- end -%>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>

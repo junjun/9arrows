@@ -1,0 +1,12 @@
+#file_index_folder_area, #file_index_file_area {
+    height: 100%;
+}
+
+.content_left, .content_center {
+    border: 1px solid #99BBE8;
+}
+
+#file_index_file {
+    width: 100%;
+    height: 100%;
+}

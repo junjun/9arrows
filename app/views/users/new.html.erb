@@ -1,0 +1,29 @@
+<% content_for(:add_scripts) do -%>
+<%= javascript_include_tag("app/users/new") %>
+<% end -%>
+
+<h2>Signup!!</h2>
+<%= error_messages_for :user %>
+<% form_for :user, :url => users_path, :html => { :id => 'user_form', :name => 'user_form' } do |f| -%>
+<table id="signup_form_table">
+  <tr>
+    <th><label for="login_id">Login <span class="must_color">※</span></label></th>
+    <td><%= f.text_field :login_id, :style => "ime-mode: inactive;" %></td>
+  </tr>
+  <tr>
+    <th><label for="srcpassword">Password <span class="must_color">※</span></label></th>
+    <td><%= f.password_field :srcpassword, :style => "ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <th><label for="user_name">Name <span class="must_color">※</span></label></th>
+    <td><%= f.text_field :user_name, :style => "ime-mode: active;" %></td>
+  </tr>
+  <tr>
+    <th><label for="email">Email <span class="must_color">※</span></label></th>
+    <td><%= f.text_field :email, :style => "ime-mode: disabled;" %></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="submit_area"><button id='btn_save' type="button">Sign up</button></td>
+  </tr>
+</table>
+<% end -%>

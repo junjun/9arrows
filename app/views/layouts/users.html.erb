@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>9Arrows</title>
+
+<%= stylesheet_link_tag([
+    'ext-2.2/css/ext-all',
+    'app/css/application',
+    'app/css/static',
+    'app/css/users'
+]) %>
+<%= @content_for_add_styles if @content_for_add_styles %>
+
+</head>
+<body>
+<div id="wrapper">
+<table id="layout">
+  <tr>
+    <td id="layout_header_nomenu">
+<!--// header //-->
+<%= render :partial => 'layouts/header_nomenu' %>
+<!--// endof header //-->
+    </td>
+  </tr>
+  <tr>
+    <td id="layout_contents">
+<!--// contents //-->
+<div id="contents">
+
+<%= yield %>
+
+</div>
+<!--// endof contents //-->
+    </td>
+  </tr>
+  <tr>
+    <td id="layout_footer"></td>
+  </tr>
+</table>
+</div>
+
+<%= javascript_include_tag([
+    url_for(:controller => 'env', :format => 'js'),
+    'lib/jquery-1.2.6/jquery',
+    'lib/jquery-1.2.6/jquery.ui',
+    'lib/jquery-1.2.6/jquery.form',
+    'lib/jquery-1.2.6/jquery.metadata',
+    'lib/jquery-1.2.6/jquery.validate.min',
+    'lib/jquery-1.2.6/jquery.validate.messages_ja',
+    'lib/ext-2.2/adapter/jquery/ext-jquery-adapter',
+    'lib/ext-2.2/ext-all.js',
+    'lib/motto/motto',
+    'lib/motto/motto.ui',
+    'lib/motto/motto.ext',
+    'lib/ext-i3-extension',
+    'lib/ext_app_extensions',
+    'lib/common',
+    'app/page'
+]) %>
+<%= @content_for_add_scripts if @content_for_add_scripts %>
+<script language="javascript">
+<%= @content_for_for_ext_scripts %>
+</script>
+</body>
+</html>

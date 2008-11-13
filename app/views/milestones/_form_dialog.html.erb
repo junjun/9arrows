@@ -1,0 +1,39 @@
+
+    <span id="showparam_fields">
+    <%= hidden_field :dlg_mil_edit_miles, :id %>
+    <%= hidden_field :dlg_mil_edit_comp, :id %>
+    <%= hidden_field :dlg_mil_edit_comp, :project_id, {:value=>@current_project.id} %>
+    <%= hidden_field :dlg_mil_edit_comp, :task_kbn %>
+    </span>
+    <table class="dlg_form_table" cellspacing="0">
+      <tr>
+        <th class="groupborder" style="width: 90px;"><%= app_localized_message(:label, :milestone) %><span class="must_color">※</span></th>
+        <td class="groupborder">
+          <%= text_field :dlg_mil_edit_comp, :item_name, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th class="groupborder"><%= app_localized_message(:label, :mils_date) %></th>
+        <td class="groupborder">
+        	<%= text_field :dlg_mil_edit_miles, :mils_date, :style => "width:80px;ime-mode:disabled;", :maxlength => "10" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word1) %></th>
+        <td>
+          <%= text_field :dlg_mil_edit_comp, :class_word1, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word2) %></th>
+        <td>
+          <%= text_field :dlg_mil_edit_comp, :class_word2, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= app_localized_message(:label, :class_word3) %></th>
+        <td>
+          <%= text_field :dlg_mil_edit_comp, :class_word3, :style => "width:100%;ime-mode:active;" %>
+        </td>
+      </tr>
+    </table>
